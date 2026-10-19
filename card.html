@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>Happy Women's day💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-grad-start: #f8cdda;
+        --bg-grad-end: #fce4ec;
+        --card-bg: #fff8f0;
+        --text-dark: #5d5d5d;
+        --text-header: #c08497;
+        --heart-color: #ff4d6d;
+        --button-bg: #c08497;
+        --button-text: #ffffff;
+        /* Chiều rộng thiệp: co theo cả chiều rộng lẫn chiều cao màn hình (ảnh bìa tỉ lệ 9:16) */
+        --w: min(300px, 80vw, 42vh);
+      }
+
+      /* Điện thoại: phóng thiệp to lên, vừa cả chiều rộng lẫn chiều cao màn hình */
+      @media (max-width: 600px) {
+        :root {
+          --w: min(88vw, calc((100vh - 60px) * 9 / 16));
+          --w: min(88vw, calc((100dvh - 60px) * 9 / 16));
+        }
+        html body {
+          padding: 10px;
+          min-height: 100vh;
+          min-height: 100dvh;
+        }
+        html body .card:hover {
+          transform: perspective(2000px) scale(1.02);
+        }
+      }
+
+      body {
+        font-family: "Baloo 2", "Segoe UI", sans-serif;
+        /* Gradasi warna latar belakang yang lebih lembut */
+        background: linear-gradient(
+          135deg,
+          var(--bg-grad-start),
+          var(--bg-grad-end)
+        );
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        flex-direction: column;
+        overflow: hidden; /* Mencegah scrollbar dari animasi hati */
+      }
+
+      .card {
+        width: var(--w);
+        background: var(--card-bg);
+        border-radius: 15px; /* Sudut kartu yang lebih tumpul */
+        transform-style: preserve-3d;
+        transform: perspective(2000px);
+        /* Bayangan yang lebih modern dan halus */
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        transition: transform 1s, box-shadow 1s;
+        position: relative;
+      }
+
+      .card:hover {
+        transform: perspective(2000px) rotate(3deg) scale(1.05);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+      }
+      
+      /* Efek 3D samping kartu disederhanakan agar lebih bersih */
+      .card::before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: #eee0d4;
+        transform-origin: bottom;
+        transform: skewX(-45deg);
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -5px;
+        width: 5px;
+        height: 100%;
+        background: #e9d9ca;
+        transform-origin: left;
+        transform: skewY(-45deg);
+      }
+
+      .imgbox {
+        width: 100%;
+        height: auto;
+        position: relative;
+        transform-origin: left;
+        transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+        z-index: 10;
+        border-radius: 15px 0 0 15px;
+      }
+
+      .imgbox img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 15px 0 0 15px;
+      }
+
+      .card:hover .imgbox {
+        transform: rotateY(-135deg);
+      }
+      
+      /* Bark/lapisan dalam dibuat senada dengan kartu */
+      .bark {
+        position: absolute;
+        background: var(--card-bg);
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s;
+        border-radius: 15px 0 0 15px;
+      }
+
+      .card:hover .bark {
+        opacity: 1;
+      }
+
+      .details {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        padding: calc(var(--w) * 0.088);
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+      }
+
+      .details h4 {
+        font-family: "Baloo 2", "Segoe UI", sans-serif;
+        font-size: calc(var(--w) * 0.078);
+        white-space: nowrap;
+        color: var(--text-header);
+        margin: 0 0 calc(var(--w) * 0.03);
+        font-weight: 700;
+      }
+      
+      /* Menghapus class .color dan .color2, diganti dengan styling yang lebih baik */
+      .details .recipient-name {
+        font-size: calc(var(--w) * 0.078);
+        margin-top: calc(var(--w) * -0.02);
+        margin-bottom: calc(var(--w) * 0.05);
+      }
+
+      .details p {
+        font-size: calc(var(--w) * 0.042);
+        color: var(--text-dark);
+        font-weight: 500;
+        line-height: 1.45;
+        margin: calc(var(--w) * 0.012) 0;
+      }
+
+      .details .signature {
+        font-family: "Pacifico", cursive;
+        font-size: calc(var(--w) * 0.052);
+        color: var(--text-header);
+      }
+
+      .details .text-right {
+        margin-top: 15px;
+        text-align: right;
+      }
+      
+      /* Nút nhận quà */
+      .link-button {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        margin-top: calc(var(--w) * 0.02);
+        padding: calc(var(--w) * 0.032) calc(var(--w) * 0.09);
+        border-radius: 999px;
+        text-decoration: none;
+        font-family: "Baloo 2", "Segoe UI", sans-serif;
+        font-weight: 700;
+        font-size: calc(var(--w) * 0.062);
+        letter-spacing: 0.5px;
+        color: #fff;
+        background: linear-gradient(135deg, #f3a0bd, #d4688f);
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 0 6px 16px rgba(192, 80, 120, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+        text-shadow: 0 1px 2px rgba(120, 30, 70, 0.4);
+        animation: btn-pulse 2s ease-in-out infinite;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .link-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -80%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+        transform: skewX(-20deg);
+        animation: btn-shine 3s ease-in-out infinite;
+      }
+
+      .link-button:hover {
+        transform: translateY(-2px) scale(1.06);
+        box-shadow: 0 10px 22px rgba(192, 80, 120, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+        animation-play-state: paused;
+      }
+
+      @keyframes btn-pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.04); }
+      }
+
+      @keyframes btn-shine {
+        0%, 55% { left: -80%; }
+        100% { left: 140%; }
+      }
+
+      audio {
+        display: none;
+      }
+
+      .hearts {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 100;
+      }
+
+      .heart {
+        position: absolute;
+        color: var(--heart-color);
+        font-size: 24px;
+        animation: fall linear forwards;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(-10vh) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(110vh) scale(0.8);
+          opacity: 0;
+        }
+      }
+
+    </style>
+  </head>
+
+<body>
+  <audio id="myAudio" autoplay loop>
+    <source src="serta_mulia.mp3" type="audio/mp3" />
+    <source src="serta_mulia.ogg" type="audio/ogg" />
+  </audio>
+
+  <div class="card">
+    <div class="imgbox">
+      <div class="bark"></div>
+      <img src="/assets/anh.png" alt="Cute Birthday Cover" />
+    </div>
+    <div class="details">
+      <h4>Happy women's day</h4>
+      <h4 class="recipient-name"> Thu Hoài </h4>
+      <p>Gửi Thu Hoài,</p>
+      <p>Chúc bạn nhỏ mỗi ngày đều có thật nhiều niềm vui, ngày càng xinh đẹp, tự tin và luôn tỏa sáng
+Mong bên cạnh bạn luôn có những người thật lòng, và đủ dũng cảm để buông bỏ những điều khiến mình mệt mỏi.
+Và hãy luôn nhớ rằng: mình xứng đáng với tất cả những điều tốt đẹp, không chỉ ngày 20/10 mà cả những ngày sau này nữa 🥰</p>
+      
+      <p class="text-right">
+        <a class='link-button' href='/startfl.htm'>Nhận quà</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="hearts"></div>
+
+
+  <!-- SCRIPT HATI -->
+  <script>
+    const audio = document.getElementById("myAudio");
+    window.addEventListener("DOMContentLoaded", function () {
+      if (localStorage.getItem("playAudio") === "true") {
+        audio.play().catch((e) => {
+          console.log("Autoplay was blocked by the browser.");
+        });
+        localStorage.removeItem("playAudio");
+      }
+    });
+
+    const heartsContainer = document.querySelector(".hearts");
+    function createHeart() {
+      const heart = document.createElement("span");
+      heart.classList.add("heart");
+      heart.innerHTML = "♥";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+      heartsContainer.appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
